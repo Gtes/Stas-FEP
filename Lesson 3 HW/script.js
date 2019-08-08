@@ -6,12 +6,12 @@ let i;
 let answerNumbersOfOperand;
 let answerOperand;
 let answerOperator;
-let counterOperand = ['first', 'second', 'third', 'fourth', 'fifth'];
+let counterOperand = ['first', 'second', 'third', 'fourth'];
 
 
 //Get answer about Operator  = answerOperator
 do {
-    answerOperator = prompt('input operator / * + -');
+    answerOperator = prompt('Input operator / * + -');
 } while (answerOperator != '+' &&
         answerOperator != '*' &&
         answerOperator != '-' &&
