@@ -18,7 +18,7 @@ function replaceAll(initStr, firstChar, secondChar) {
 
     /* String processing */
     resultStr = initStr.replace(firstChar, secondChar);
-    return resultStr.indexOf(firstChar) != -1 ? replaceAll(resultStr, firstChar, secondChar) : resultStr;
+    return resultStr.indexOf(firstChar) >= 0 ? replaceAll(resultStr, firstChar, secondChar) : resultStr;
 }
 
 finalSstring = replaceAll(initialString, initialLetter, targetLetter);
