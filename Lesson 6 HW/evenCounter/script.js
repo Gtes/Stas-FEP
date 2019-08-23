@@ -7,7 +7,7 @@
 'use strict';
 
 function getNumber() {
-    let numberAnswer = prompt('Input Number');
+    const numberAnswer = prompt('Input Number');
 
     /* number input validation number, empty, cancel, integer */
     if (isNaN(numberAnswer) ||
@@ -40,8 +40,8 @@ function evenCount(userNumber) {
     return evenCounter;
 }
 
-let numberAnswer = getNumber();
+const numberAnswer = getNumber();
 
-let countResult = evenCount(numberAnswer);
+const countResult = evenCount(numberAnswer);
 console.log('You have ' + countResult + ' even nubers in your ' + numberAnswer);
 

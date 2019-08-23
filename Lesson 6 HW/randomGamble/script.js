@@ -7,7 +7,7 @@
 'use strict';
 
 function getNumber() {
-    let numberAnswer = prompt('Input Number');
+    const numberAnswer = prompt('Input Number');
 
     /* number input validation number, empty, cancel, integer */
     if (isNaN(numberAnswer) ||
@@ -34,8 +34,8 @@ function gamble() {
 
     do {
         /* get number and random functions calls */
-        let userNumber = getNumber();
-        let randomNumber = getRandom();
+        const userNumber = getNumber();
+        const randomNumber = getRandom();
 
         /* main random - user numbers checker */
         if (userNumber == randomNumber) {
@@ -55,7 +55,9 @@ function gamble() {
     return userScore;
 }
 
-console.log(gamble());
+const gambleResult = gamble();
+
+console.log(gambleResult);
 
 
 /*future garbage gamble recursion implementation
