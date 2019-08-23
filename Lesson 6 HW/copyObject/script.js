@@ -21,6 +21,7 @@ const initialObject = {
 
 function copyObject( obj ) {
     let newObj = {};
+
     for (let i in obj) {
         if ( typeof( obj[i] ) === 'object' ) {
             newObj[i] = copyObject(obj[i]);
@@ -28,6 +29,7 @@ function copyObject( obj ) {
             newObj[i] = obj[i];
         }
     }
+    
     return newObj;
 }
 
