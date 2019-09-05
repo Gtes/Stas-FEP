@@ -3,20 +3,20 @@ const taskName = document.getElementById('taskName');
 const todoList = document.getElementById('todoList');
 const addTask = document.getElementById('addTask');
 
-addTask.addEventListener('click', newToDoTask);
+addTask.addEventListener('click', addNewToDoTask);
 todoList.addEventListener('click', taskControl);
 
 
-function createTask(inputValue) {
+function generateLi(inputValue) {
     return listItemTemplate.replace('{{taskName}}', inputValue);
 }
 
 
-function newToDoTask() {
+function addNewToDoTask() {
     if (taskName.value.trim() == "") {
         alert('Input Task Name');
     } else {
-        todoList.innerHTML += createTask(taskName.value);
+        todoList.innerHTML += generateLi(taskName.value);
         taskName.select();
     }
 }
