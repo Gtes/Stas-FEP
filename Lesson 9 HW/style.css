@@ -1,0 +1,38 @@
+.done{
+  background-color: #dbffa4;
+  text-decoration: line-through;
+}
+
+#taskName{
+  width: 450px;
+}
+
+#todoList {
+  padding: 0;
+}
+
+#todoList > li {
+  list-style: none; 
+}
+
+.todoform{
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formheader{
+  text-align: center;
+}
+
+.removeTask{
+  float: right;
+}
+.taskText {
+  display: inline-block;
+  width: 440px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
