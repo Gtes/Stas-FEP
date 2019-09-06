@@ -23,21 +23,20 @@ function addNewToDoTask() {
 
 
 function taskControl(element) {
-    let targetElement = element.target;
     switch (true) {
-        case targetElement.classList.contains('removeTask'):
-            removeTask(targetElement);
+        case element.target.classList.contains('removeTask'):
+            removeTask(element.target.parentElement);
             break;
 
-        case targetElement.classList.contains('taskText'):
-            toggleClass(targetElement, 'done');
+        case element.target.classList.contains('taskText'):
+            toggleClass(element.target, 'done');
             break;
     }
 }
 
 
 function removeTask(element) {
-    element.parentElement.remove();
+    element.remove();
 }
 
 function toggleClass(element, className) {
