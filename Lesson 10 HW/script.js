@@ -8,16 +8,16 @@ console.log('устанавливает базовое значение в 100 '
 console.log('//возвращает 500 ' + calculator.mult(5));
 
 
-function createCalculator(val) {
+function createCalculator(result = 0) {
     /* save initial value to result*/
-    let result = val;
+    // let result = val;
     
     return {
         add: (val) => result += val,
         sub: (val) => result -= val,
-        mult: (val) => result *= val,
         divide: (val) => result /= val,
+        mult: (val) => result *= val,
+        reset: () => result = 0,
         set: (val) => result = val,
-        reset: () => result = 0
     }
 }
