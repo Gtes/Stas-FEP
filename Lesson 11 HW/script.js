@@ -21,7 +21,7 @@ function averageMark(group) {
 
     for (let i in group) {
         concatedArr = concatedArr.concat(group[i].marks);
-        console.log(group[i]);
+        // console.log(group[i]); < debug info
     }
 
 
@@ -38,8 +38,8 @@ const students = [
     new Student('Student 12', [10, 0, 8, 0, 3, 4])
 ];
 
-console.log('Student 1 = ' + students[0].averageMark());
-console.log('Student 2 = ' + students[1].averageMark());
+console.log('Student 1 Average Mark = ' + students[0].averageMark());
+console.log('Student 2 Average Mark = ' + students[1].averageMark());
 
 const groupAverageMark = averageMark(students);
 console.log('Group Average Mark = ' + groupAverageMark);
