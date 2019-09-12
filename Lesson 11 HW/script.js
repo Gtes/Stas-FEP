@@ -24,7 +24,6 @@ function averageMark(group) {
         // console.log(group[i]); < debug info
     }
 
-
     arrayLength = concatedArr.length;
     averageMarkResult = concatedArr.reduce((previous, current) =>
         current += previous);
