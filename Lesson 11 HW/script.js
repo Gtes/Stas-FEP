@@ -3,12 +3,11 @@ function Student(name, marks) {
     this.marks = marks;
 }
 
-Student.prototype.averageMark = function (marks) {
-    marks = this.marks;
+Student.prototype.averageMark = function () {
     let averageMarkResult;
-    let arrayLength = marks.length;
+    let arrayLength = this.marks.length;
 
-    averageMarkResult = marks.reduce((acc, cur) => cur += acc);
+    averageMarkResult = this.marks.reduce((acc, cur) => cur += acc);
     averageMarkResult /= arrayLength;
     return Math.floor(averageMarkResult * 100) / 100;
 }
