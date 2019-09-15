@@ -1,6 +1,7 @@
 'use strict'
-function Hamburger(size, stuffing = 'without stuffing') {
-    this.size = size;
+
+function Hamburger(type, stuffing = 'without stuffing') {
+    this.type = type;
     this.stuffing = stuffing;
 }
 
