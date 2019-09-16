@@ -12,11 +12,15 @@ Hamburger.prototype.calculateCalories = function () {
 
     let caloriesResult = typeCalories + stuffingCalories;
 
-    for(let i in this.topping){
-        caloriesResult += this.topping[i].calories;
-    }
+    if (this.hasOwnProperty('topping')) {
+        return caloriesResult += this.topping.reduce((acc, cur) =>
+            ({
+                calories: acc.calories + cur.calories
+            })).calories;
 
-    return caloriesResult;
+    } else {
+        return caloriesResult;
+    }
 }
 
 Hamburger.prototype.calculatePrice = function () {
@@ -25,11 +29,15 @@ Hamburger.prototype.calculatePrice = function () {
 
     let priceResult = typePrice + stuffingPrice;
 
-    for(let i in this.topping){
-        priceResult += this.topping[i].price;
-    }
+    if (this.hasOwnProperty('topping')) {
+        return priceResult += this.topping.reduce((acc, cur) =>
+            ({
+                price: acc.price + cur.price
+            })).price;
 
-    return priceResult;
+    } else {
+        return priceResult;
+    }
 }
 
 Hamburger.prototype.addTopping = function (topping) {
