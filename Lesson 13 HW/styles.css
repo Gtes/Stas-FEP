@@ -1,0 +1,19 @@
+#container {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+} 
+
+#container > li > img{
+    max-width: 700px;
+} 
+
+.li-hidden{
+    display:none;
+}
+
+.li-active{
+    display:block;
+}
+
