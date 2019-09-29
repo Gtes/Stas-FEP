@@ -75,15 +75,14 @@ const myGallery = new Gallery(
     document.getElementById('container')
 );
 
+myGallery.initGallery();
+
 
 const nextButton = document.getElementById('nextSlide');
 const prevButton = document.getElementById('prevSlide');
 
 nextButton.addEventListener('click', myGallery.next);
-
 prevButton.addEventListener('click', myGallery.prev);
-
-myGallery.initGallery();
 
 
 
