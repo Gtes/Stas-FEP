@@ -40,22 +40,8 @@ class Tabset {
                     Tabset.hideElement(this.children[i]);
                 }
 
-                console.log(e.target.parentElement.classList);
-
-                // if () {
-
-                //     console.log('haha');
-                //     var style = document.createElement('style');
-                //     document.head.appendChild(style);
-                //     style.sheet.insertRule('.my-tabset-container .active .tabset-body  {border-radius: 5px 0px 5px 5px;}');
-                // }
-
                 Tabset.showElement(e.target.parentElement)
             }
-
-
-
-
         }
     }
 
