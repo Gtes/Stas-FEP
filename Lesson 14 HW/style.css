@@ -1,0 +1,45 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.my-tabset-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  max-width: 700px;
+}
+
+.my-tabset-container .tabset-heading {
+  font-weight: bold;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  
+}
+
+.my-tabset-container .tabset-body {
+  display: none;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #001628;
+  padding: 30px;
+  position: absolute;
+  left: 0px;
+  width: calc(100% - 60px);
+  overflow-wrap: break-word;
+
+  color: #f5d67b;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.my-tabset-container .active .tabset-body {
+  display: block;
+}
+
+.my-tabset-container .active .tabset-heading {
+  color: #ff8a00;
+  background-color: #001628;
+  font-size: 12px;
+}
