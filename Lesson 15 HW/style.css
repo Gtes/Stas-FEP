@@ -1,0 +1,29 @@
+.my-table-container > table, th, td{
+  /* border: 1px solid black; */
+  padding: 10px;
+}
+
+.my-table-container > table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.my-table-container > table > tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.my-table-container > table > thead{
+  text-align: left;
+  background: none;
+}
+
+.my-table-container {
+  width: 600px;
+}
+
+#addPersonForm{
+  background: none;
+}
+
+
+
