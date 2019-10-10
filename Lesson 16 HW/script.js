@@ -1,13 +1,13 @@
 'use strict';
 
 const galleryItemTemplate = document.getElementById('galleryItemTemplate').innerHTML;
-const imgtest = document.getElementById('imgtest').innerHTML;
 
 const galleryContainer = document.getElementById('gallery');
-const fullImage = document.getElementById('fullImage');
-const fullview = document.getElementById('fullView');
-// const blackBG= dßocument.querySelector('.blackBG');
-const myBg = document.getElementById('myBg')
+const myBg = document.getElementById('myBg');
+
+
+
+
 
 const galleryUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=50'
 
@@ -29,20 +29,35 @@ function generateGalleryItem(el) {
     return galleryItemTemplate.replace('{{photoTitleText}}', el.title)
         .replace('{{thumbnailUrl}}', el.thumbnailUrl)
         .replace('{{url}}', el.url);
-
 }
 
 function galleryContainerEvent(e) {
     console.log(e.target);
-    if (e.target.classList.contains('galleryImage')) {
-        let hrefMy = e.target.parentElement.href;
-        console.log(hrefMy);
-        document.getElementById('myFull').src = hrefMy;
-        console.log(myBg);
-        myBg.classList.add('blackBG');
-        e.stopPropagation();
+    const fullViewBackground = document.querySelector('.fullViewBackground');
+    const bigImage = document.querySelector('.bigImage');
+
+    switch (true) {
+        case e.target.classList.contains('galleryImage'):
+            let hrefMy = e.target.parentElement.href;
+            bigImage.src = hrefMy;
+            bigImage.classList.add('active');
+            fullViewBackground.classList.add('active');
+
+            e.preventDefault();
+
+            break;
+
+        case e.target.classList.contains('bigImage'):
+        case e.target.classList.contains('fullViewBackground'):
+                hideFullView();
+                break;
     }
-    e.preventDefault();
+
+    function hideFullView (){
+        fullViewBackground.classList.remove('active');
+        bigImage.classList.remove('active');
+    }
+
 
 
 }
