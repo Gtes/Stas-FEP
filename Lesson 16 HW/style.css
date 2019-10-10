@@ -1,0 +1,27 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.photo-container {
+    position: relative;  
+    margin: 3px 5px 2px 5px;
+    
+}
+
+.photo-title {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    /* max-width: 150px; */
+    position: absolute;
+    bottom: 0px;
+    box-sizing: border-box;
+    padding: 3px 3px 7px 3px;
+    text-align: center;
+    background: rgba(249, 249, 255, 0.514);
+  }
