@@ -1,14 +1,7 @@
 'use strict';
 
 const galleryItemTemplate = document.getElementById('galleryItemTemplate').innerHTML;
-
 const galleryContainer = document.getElementById('gallery');
-const myBg = document.getElementById('myBg');
-
-
-
-
-
 const galleryUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=50'
 
 galleryContainer.addEventListener('click', galleryContainerEvent);
@@ -32,7 +25,6 @@ function generateGalleryItem(el) {
 }
 
 function galleryContainerEvent(e) {
-    console.log(e.target);
     const fullViewBackground = document.querySelector('.fullViewBackground');
     const bigImage = document.querySelector('.bigImage');
 
@@ -49,15 +41,13 @@ function galleryContainerEvent(e) {
 
         case e.target.classList.contains('bigImage'):
         case e.target.classList.contains('fullViewBackground'):
-                hideFullView();
-                break;
+            hideFullView();
+            break;
     }
 
-    function hideFullView (){
+    function hideFullView() {
         fullViewBackground.classList.remove('active');
         bigImage.classList.remove('active');
     }
-
-
 
 }
