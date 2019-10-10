@@ -6,6 +6,8 @@ const imgtest = document.getElementById('imgtest').innerHTML;
 const galleryContainer = document.getElementById('gallery');
 const fullImage = document.getElementById('fullImage');
 const fullview = document.getElementById('fullView');
+// const blackBG= dßocument.querySelector('.blackBG');
+const myBg = document.getElementById('myBg')
 
 const galleryUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=50'
 
@@ -25,20 +27,22 @@ fetch(galleryUrl)
 
 function generateGalleryItem(el) {
     return galleryItemTemplate.replace('{{photoTitleText}}', el.title)
-                                .replace('{{thumbnailUrl}}', el.thumbnailUrl)
-                                .replace('{{url}}', el.url);    
+        .replace('{{thumbnailUrl}}', el.thumbnailUrl)
+        .replace('{{url}}', el.url);
 
 }
 
-function galleryContainerEvent(e){
-    // console.log(e.target);
-    if (e.target.classList.contains('galleryImage') ){
-        console.log(e.target.parenElement.href);
-        document.getElementById('fullView').innerHTML = imgtest.replace('{{imageUrl}}', );
+function galleryContainerEvent(e) {
+    console.log(e.target);
+    if (e.target.classList.contains('galleryImage')) {
+        let hrefMy = e.target.parentElement.href;
+        console.log(hrefMy);
+        document.getElementById('myFull').src = hrefMy;
+        console.log(myBg);
+        myBg.classList.add('blackBG');
         e.stopPropagation();
     }
-    e.stopPropagation();
-    
-    
+    e.preventDefault();
+
 
 }
