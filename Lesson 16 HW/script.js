@@ -10,7 +10,7 @@ galleryContainer.addEventListener('click', galleryContainerEvent);
 fetch(galleryUrl)
     .then(response => response.json())
     .then(json => {
-        galleryContainer.innerHTML += json.map(generateGalleryItem).join('');
+        galleryContainer.innerHTML += json.map(generateGalleryItem).join('');//вынести из gallery сслыка на удаленный HTML через innerHTML
     })
     .catch(error => {
         console.error('Error loading');
