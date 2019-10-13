@@ -1,0 +1,41 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#user-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.user-list {
+    font-size: 13px;
+    background: aquamarine;
+}
+
+.user-list-item {
+    padding: 5px 20px 5px 5px;
+    border-bottom: 1px solid black;
+
+}
+
+.user-list-item-username {
+    color: #656565;
+    pointer-events: none;
+}
+
+.user-list-item-name {
+    pointer-events: none;
+}
+
+
+.user-details {
+    background: blueviolet;
+
+}

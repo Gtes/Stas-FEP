@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lesson 17</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js" async></script>
+</head>
+
+<body>
+  <div id="user-container">
+
+    <div class="user-list">
+    </div>
+
+    <div class="user-details">
+        <div class="loader"></div>
+    </div>
+
+  </div>
+
+
+  <script type="text/template" id='user-list-item-template'>
+    <div class="user-list-item" data-id="{{id}}">
+      <div class="user-list-item-name">{{name}}</div>
+      <div class="user-list-item-username">{{username}}</div>
+    </div>
+  </script>
+  <script type="text/template" id='user-details-template'>
+    <div class="user-details">
+        <div class="user-details-id">{{id}}</div>
+        <div class="user-details-email">{{email}}</div>
+        
+        <div class="user-details-address">
+          <div class="user-details-address__street">{{street}}</div>
+          <div class="user-details-address__suite">{{suite}}</div>
+          <div class="user-details-address__city">{{city}}</div>
+          <div class="user-details-address__zipcode">{{zipcode}}</div>
+        </div>
+
+        <div class="user-details-phone">{{phone}}</div>
+        <div class="user-details-website">{{website}}</div>
+        
+        <div class="user-details-company">
+          <div class="user-details-company-name">{{name}}</div>
+          <div class="user-details-company-catchPhrase">{{catchPhrase}}</div>
+          <div class="user-details-company-bs">{{bs}}</div>
+        </div>
+      
+      </div>
+  </script>
+</body>
+
+</html>
