@@ -37,6 +37,8 @@ function renderUserListItems(list) {
 
 function renderUserDetails(el) {
     const userDetailsHtml = userDetailsTemplate.replace('{{id}}', el.id)
+        .replace('{{name}}', el.name)
+        .replace('{{username}}', el.username)
         .replace('{{email}}', el.email)
         .replace('{{street}}', el.address.street)
         .replace('{{suite}}', el.address.suite)
@@ -66,6 +68,5 @@ function userListEvent(e) {
         case e.target.classList.contains('user-list-item'):
             fetchUserDetails(targetUserID);
             break;
-
     }
 }

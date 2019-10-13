@@ -16,7 +16,6 @@
     </div>
 
     <div class="user-details">
-        <div class="loader"></div>
     </div>
 
   </div>
@@ -29,27 +28,29 @@
     </div>
   </script>
   <script type="text/template" id='user-details-template'>
-    <div class="user-details">
-        <div class="user-details-id">{{id}}</div>
-        <div class="user-details-email">{{email}}</div>
+        <h2>User Details:</h2>
+        <div class="user-details-id">ID: {{id}}</div>
+        <div class="user-details-name">Name: {{name}}</div>
+        <div class="user-details-username">Username: {{username}}</div>
+        <div class="user-details-email">Email: <a href="mailto:#">{{email}}</a></div>
         
         <div class="user-details-address">
-          <div class="user-details-address__street">{{street}}</div>
-          <div class="user-details-address__suite">{{suite}}</div>
-          <div class="user-details-address__city">{{city}}</div>
-          <div class="user-details-address__zipcode">{{zipcode}}</div>
+          <h3>Adress:</h3>
+          <div class="user-details-address__street">Street: {{street}}</div>
+          <div class="user-details-address__suite">Suite: {{suite}}</div>
+          <div class="user-details-address__city">City: {{city}}</div>
+          <div class="user-details-address__zipcode">ZIP: {{zipcode}}</div>
         </div>
 
-        <div class="user-details-phone">{{phone}}</div>
-        <div class="user-details-website">{{website}}</div>
+        <div class="user-details-phone">Phone: <a href="tel:#">{{phone}}</a></div>
+        <div class="user-details-website">Website: <a href="#">{{website}}</a></div>
         
         <div class="user-details-company">
-          <div class="user-details-company-name">{{name}}</div>
-          <div class="user-details-company-catchPhrase">{{catchPhrase}}</div>
-          <div class="user-details-company-bs">{{bs}}</div>
+          <h3>Company:</h3>
+          <div class="user-details-company-name">Name: {{name}}</div>
+          <div class="user-details-company-catchPhrase">Catch Phrase: {{catchPhrase}}</div>
+          <div class="user-details-company-bs">bs: {{bs}}</div>
         </div>
-      
-      </div>
   </script>
 </body>
 
