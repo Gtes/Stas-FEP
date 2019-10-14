@@ -16,10 +16,12 @@ fetch(usersURL)
     .then(response => response.json())
     .then(json => {
         renderUserListItems(json);
-    }).then(() => {
-        let firstUserID = userList.firstElementChild.getAttribute('data-id');
-        fetchUserDetails(firstUserID);
+        fetchUserDetails(json[0].id);
     })
+    // .then(() => {
+    //     let firstUserID = userList.firstElementChild.getAttribute('data-id');
+    //     fetchUserDetails(firstUserID);
+    // })
     .catch(error => {
         console.error('Error loading');
     });
@@ -62,7 +64,7 @@ function fetchUserDetails(userID) {
 }
 
 function userListEvent(e) {
-    const targetUserID = e.target.getAttribute('data-id')
+    const targetUserID = e.target.dataset.id;
 
     switch (true) {
         case e.target.classList.contains('user-list-item'):
