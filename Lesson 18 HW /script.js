@@ -11,13 +11,9 @@ const userDetailsTemplate = document.getElementById('user-details-template').inn
 const userDetailsFormTemplate = document.getElementById('user-details-form-template').innerHTML;
 
 
-const addBtn = document.querySelector('.add-btn');
-// const saveUserBtn = document.getElementById('save-new-user');
+const displayAddUserFormBtn = document.querySelector('.display-form-btn');
 
-
-// saveUserBtn.addEventListener('click', addNewUser);
-
-addBtn.addEventListener('click', displayForm);
+displayAddUserFormBtn.addEventListener('click', displayForm);
 userList.addEventListener('click', userListEvent);
 userDetails.addEventListener('click', userDetailsEvent);
 
@@ -28,7 +24,6 @@ function userDetailsEvent(e) {
         case e.target.classList.contains('delete-user-btn'):
             const targetUserID = e.target.parentNode.querySelector('.user-details-id-value').innerHTML;
             deleteUser(targetUserID);
-
 
             if (userList.firstElementChild == null) {
                 userDetails.innerHTML = '';
@@ -52,8 +47,6 @@ function deleteUser(userId) {
     })
 
     let getUserFromList = userList.querySelector(`[data-id='${userId}']`);
-    // console.log(userId);
-
     getUserFromList.parentNode.removeChild(getUserFromList);
 
 }
@@ -152,7 +145,7 @@ function fetchUserDetails(userID) {
             renderUserDetails(json);
         })
         .catch(error =>{
-            userDetails.innerHTML='';
+            userDetails.innerHTML =  '';
         });
 }
 
