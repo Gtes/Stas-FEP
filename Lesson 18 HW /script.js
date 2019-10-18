@@ -12,10 +12,6 @@ const userDetailsFormTemplate = document.getElementById('user-details-form-templ
 
 
 const addBtn = document.querySelector('.add-btn');
-// const saveUserBtn = document.getElementById('save-new-user');
-
-
-// saveUserBtn.addEventListener('click', addNewUser);
 
 addBtn.addEventListener('click', displayForm);
 userList.addEventListener('click', userListEvent);
@@ -52,8 +48,6 @@ function deleteUser(userId) {
     })
 
     let getUserFromList = userList.querySelector(`[data-id='${userId}']`);
-    // console.log(userId);
-
     getUserFromList.parentNode.removeChild(getUserFromList);
 
 }
@@ -68,7 +62,6 @@ function getInputValue(className) {
 
 function addNewUser() {
     const getNewId = document.querySelectorAll('.user-list-item').length + 1;
-
 
     let newUserData = {
         id: getNewId,
@@ -152,7 +145,7 @@ function fetchUserDetails(userID) {
             renderUserDetails(json);
         })
         .catch(error =>{
-            userDetails.innerHTML='';
+            userDetails.innerHTML='';   
         });
 }
 
