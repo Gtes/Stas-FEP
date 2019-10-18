@@ -11,9 +11,9 @@ const userDetailsTemplate = document.getElementById('user-details-template').inn
 const userDetailsFormTemplate = document.getElementById('user-details-form-template').innerHTML;
 
 
-const addBtn = document.querySelector('.add-btn');
+const displayAddUserFormBtn = document.querySelector('.display-form-btn');
 
-addBtn.addEventListener('click', displayForm);
+displayAddUserFormBtn.addEventListener('click', displayForm);
 userList.addEventListener('click', userListEvent);
 userDetails.addEventListener('click', userDetailsEvent);
 
@@ -24,7 +24,6 @@ function userDetailsEvent(e) {
         case e.target.classList.contains('delete-user-btn'):
             const targetUserID = e.target.parentNode.querySelector('.user-details-id-value').innerHTML;
             deleteUser(targetUserID);
-
 
             if (userList.firstElementChild == null) {
                 userDetails.innerHTML = '';
@@ -145,7 +144,7 @@ function fetchUserDetails(userID) {
             renderUserDetails(json);
         })
         .catch(error =>{
-            userDetails.innerHTML='';   
+            userDetails.innerHTML =  '';
         });
 }
 
