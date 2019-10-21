@@ -23,8 +23,8 @@ fetchGalleryUrl.then((response) => {
 
 
 function init(data) {
-    localStorage.setItem('galleryPhotosData', JSON.stringify(data))
-    fullGalleryPhotosData = JSON.parse(localStorage.getItem('galleryPhotosData'));
+    fullGalleryPhotosData = JSON.stringify(data);
+    fullGalleryPhotosData = JSON.parse(fullGalleryPhotosData);
 
     renderGallery(generateGalleryPageData(fullGalleryPhotosData, initialPage));
     renderPagination(fullGalleryPhotosData);
