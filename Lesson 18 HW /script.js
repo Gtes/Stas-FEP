@@ -18,6 +18,17 @@ userList.addEventListener('click', userListEvent);
 userDetails.addEventListener('click', userDetailsEvent);
 
 
+fetch(usersURL)
+    .then(response => response.json())
+    .then(json => {
+        renderUserListItems(json);
+        fetchUserDetails(json[0].id);
+    })
+    .catch(error => {
+        console.error('Error loading');
+    });
+
+
 function userDetailsEvent(e) {
 
     switch (true) {
@@ -46,8 +57,8 @@ function deleteUser(userId) {
         method: 'DELETE',
     })
 
-    let getUserFromList = userList.querySelector(`[data-id='${userId}']`);
-    getUserFromList.parentNode.removeChild(getUserFromList);
+    let getUserById = userList.querySelector(`[data-id='${userId}']`);
+    getUserById.parentNode.removeChild(getUserById);
 
 }
 
@@ -89,22 +100,11 @@ function addNewUser() {
         method: 'POST',
         body: JSON.stringify(newUserData)
     }).then((data) => {
-        return userList.innerHTML += addUserToList(newUserData);
+        return userList.innerHTML += generateUserListItem(newUserData);
     });
 }
 
-
-fetch(usersURL)
-    .then(response => response.json())
-    .then(json => {
-        renderUserListItems(json);
-        fetchUserDetails(json[0].id);
-    })
-    .catch(error => {
-        console.error('Error loading');
-    });
-
-function addUserToList(elem) {
+function generateUserListItem(elem) {
     return userListItemTemplate.replace('{{id}}', elem.id)
         .replace('{{name}}', elem.name)
         .replace('{{username}}', elem.username);
@@ -113,11 +113,12 @@ function addUserToList(elem) {
 
 function renderUserListItems(list) {
     const usersHtml = list.map(elem => {
-        return addUserToList(elem);
+        return generateUserListItem(elem);
     })
 
     return userList.innerHTML = usersHtml.join('');
 }
+
 
 function renderUserDetails(el) {
     const userDetailsHtml = userDetailsTemplate.replace('{{id}}', el.id)
@@ -137,16 +138,18 @@ function renderUserDetails(el) {
     return userDetails.innerHTML = userDetailsHtml;
 }
 
+
 function fetchUserDetails(userID) {
     fetch(usersURL + userID)
         .then(response => response.json())
         .then(json => {
             renderUserDetails(json);
         })
-        .catch(error =>{
-            userDetails.innerHTML =  '';
+        .catch(error => {
+            userDetails.innerHTML = '';
         });
 }
+
 
 function userListEvent(e) {
     const targetUserID = e.target.dataset.id;
