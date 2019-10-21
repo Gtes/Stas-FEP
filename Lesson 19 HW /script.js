@@ -1,5 +1,4 @@
 'use strict';
-
 const galleryItemTemplate = document.getElementById('galleryItemTemplate').innerHTML;
 const paginationPageElement = document.getElementById('paginationPageElementTemplate').innerHTML;
 
@@ -14,6 +13,7 @@ galleryPagination.addEventListener('click', paginationEvents);
 
 
 const PER_PAGE_ITEMS = 50;
+const LAST_PAGE = localStorage.getItem('lastPage');
 let fullGalleryPhotosData;
 
 fetchGalleryUrl.then((response) => {
@@ -23,8 +23,7 @@ fetchGalleryUrl.then((response) => {
 
 
 function init(data) {
-    fullGalleryPhotosData = JSON.stringify(data);
-    fullGalleryPhotosData = JSON.parse(fullGalleryPhotosData);
+    fullGalleryPhotosData = data;
 
     renderGallery(generateGalleryPageData(fullGalleryPhotosData, initialPage));
     renderPagination(fullGalleryPhotosData);
@@ -32,11 +31,10 @@ function init(data) {
 
 //pagination handling
 let initialPage = function () {
-    if (!localStorage.getItem('lastPage')) {
-        
+    if (!LAST_PAGE) {
         return 1
     } else {
-        return localStorage.getItem('lastPage');
+        return LAST_PAGE;
     }
 }();
 
@@ -69,7 +67,6 @@ function addTargetActiveClass(el){
     } else {
         el.classList.add('active')
     }
-
 }
 
 
