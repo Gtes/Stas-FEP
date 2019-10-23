@@ -16,12 +16,6 @@ init();
 function init() {
     listOfNotes = getState();
     renderBoard(listOfNotes)
-
-}
-
-
-function saveState() {
-    localStorage.setItem('board', JSON.stringify(listOfNotes));
 }
 
 
@@ -31,13 +25,20 @@ function getState() {
     return data ? JSON.parse(data) : [];
 }
 
+function saveState() {
+    localStorage.setItem('board', JSON.stringify(listOfNotes));
+}
 
-function onNoteChange(el) {
-    const id = el.parentNode.dataset.noteId
+function renderBoard(data) {
+    const boardItemsHtml = data.map((data) => generateNote(data));
+    boardContainer.innerHTML = boardItemsHtml.join('');
+}
 
-    listOfNotes.find(x => x.id == id).description = el.value;
 
-    saveState();
+function generateNote(note) {
+    return boardNoteTemplate
+        .replace('{{id}}', note.id)
+        .replace('{{noteDescriptionText}}', note.description)
 }
 
 
@@ -55,6 +56,15 @@ function onBoardEvent(e) {
                 deleteNote(targetParentId);
             break;
     }
+}
+
+
+function onNoteChange(el) {
+    const id = el.parentNode.dataset.noteId
+
+    listOfNotes.find(x => x.id == id).description = el.value;
+
+    saveState();
 }
 
 
@@ -89,17 +99,3 @@ function createNewEmptyNote() {
 
     saveState();
 }
-
-
-function generateNote(note) {
-    return boardNoteTemplate
-        .replace('{{id}}', note.id)
-        .replace('{{noteDescriptionText}}', note.description)
-}
-
-
-function renderBoard(data) {
-    const boardItemsHtml = data.map((data) => generateNote(data));
-    boardContainer.innerHTML = boardItemsHtml.join('');
-}
-
