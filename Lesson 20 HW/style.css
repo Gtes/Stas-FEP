@@ -14,6 +14,13 @@ body {
     flex-wrap: wrap;
 }
 
+.board-note-title{
+    display: flex;
+    border: none;
+    outline: none;
+    background: #F3C829;
+}
+
 .board-note {
     margin: 5px;
     margin-right: 0;
@@ -26,12 +33,12 @@ body {
 }
 
 
-.board-note-titile,
+.board-note-title,
 .board-note-description {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.board-note-titile {
+.board-note-title {
     font-weight: bold;
     font-size: 18px;
 }

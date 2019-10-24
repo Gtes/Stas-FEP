@@ -16,7 +16,8 @@
 
   <script type="text/template" id='board-note-template'>
     <div class = "board-note" draggable="true" data-note-id = "{{id}}">
-      <textarea class = "board-note-description" placeholder = "Input your notes" >{{noteDescriptionText}}</textarea>
+      <input type="text" class="board-note-title" value="{{noteTitleText}}" placeholder = "Input Note Title"> 
+      <textarea class = "board-note-description" placeholder = "Input Note Description" >{{noteDescriptionText}}</textarea>
       <button class = "delete-note-btn">x</button>
     </div>
   </script>

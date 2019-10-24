@@ -1,5 +1,10 @@
 const BOARD_DESCRIPTION_CLASS = 'board-note-description';
+const BOARD_TITLE_CLASS = 'board-note-title';
+
 const DELETE_NOTE_BUTTON = 'delete-note-btn'
+
+const NOTE_DESCRIPTION_FIELD = 'description';
+const NOTE_TITLE_FIELD = 'title';
 
 const boardNoteTemplate = document.getElementById('board-note-template').innerHTML;
 const boardContainer = document.getElementById('board');
@@ -38,37 +43,44 @@ function renderBoard(data) {
 function generateNote(note) {
     return boardNoteTemplate
         .replace('{{id}}', note.id)
+        .replace('{{noteTitleText}}', note.title)
         .replace('{{noteDescriptionText}}', note.description)
 }
 
 
 function onBoardEvent(e) {
-    const targetParentId = e.target.parentNode.dataset.noteId;        
+    const targetParentId = e.target.parentNode.dataset.noteId;
 
     switch (true) {
         case e.target.classList.contains(BOARD_DESCRIPTION_CLASS):
             e.target.addEventListener('change', () => {
-                onNoteChange(e.target)
-            });
+                onNoteChange(e.target, NOTE_DESCRIPTION_FIELD)
+            }, {once: true});
+            break;
+
+        case e.target.classList.contains(BOARD_TITLE_CLASS):
+            e.target.addEventListener('change', () => {
+                onNoteChange(e.target, NOTE_TITLE_FIELD)
+            }, {once: true});
             break;
 
         case e.target.classList.contains(DELETE_NOTE_BUTTON):
-                deleteNote(targetParentId);
+            deleteNote(targetParentId);
             break;
     }
 }
 
 
-function onNoteChange(el) {
+function onNoteChange(el, field) {
     const id = el.parentNode.dataset.noteId
 
-    listOfNotes.find(x => x.id == id).description = el.value;
+    listOfNotes.find(x => x.id == id)[field] = el.value;
 
     saveState();
 }
 
 
-function deleteNote(noteId){
+function deleteNote(noteId) {
     listOfNotes = listOfNotes.filter(el => el.id != noteId);
 
     deleteNoteItem(noteId);
@@ -77,13 +89,13 @@ function deleteNote(noteId){
 }
 
 
-function deleteNoteItem(noteId){
+function deleteNoteItem(noteId) {
     const element = getNoteById(noteId);
-    element && element.remove(); 
+    element && element.remove();
 }
 
 
-function getNoteById(noteId){
+function getNoteById(noteId) {
     return boardContainer.querySelector(`[data-note-id="${noteId}"]`)
 }
 
@@ -91,6 +103,7 @@ function getNoteById(noteId){
 function createNewEmptyNote() {
     const newEmptyNote = {
         id: Date.now(),
+        title: '',
         description: ''
     }
 
