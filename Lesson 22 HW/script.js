@@ -170,9 +170,7 @@ $(function () {
 
                 listOfNotes.find(be => be.id == id)['x'] = ui.position.top;
                 listOfNotes.find(be => be.id == id)['y'] = ui.position.left;
-
                 saveState();
-
             }
 
         }
