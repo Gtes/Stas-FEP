@@ -1,4 +1,5 @@
 $(function () {
+    const CREATE_NOTE_FORM = '#createNoteForm'
     const BOARD_DESCRIPTION_CLASS = 'board-note-description';
     const BOARD_TITLE_CLASS = 'board-note-title';
 
@@ -13,7 +14,7 @@ $(function () {
     const $addNoteBtn = $('.add-note-btn');
 
     boardContainer.addEventListener('click', onBoardEvent);
-    $addNoteBtn.on('click', createNewEmptyNote)
+    $addNoteBtn.on('click', createNewnNoteForm)
 
     let listOfNotes = [];
 
@@ -107,16 +108,15 @@ $(function () {
     }
 
 
-    function createNewEmptyNote() {
-        $('#mytest').dialog('open');
-
+    function createNewnNoteForm() {
+        $(CREATE_NOTE_FORM).dialog('open');
     }
 
-    function testNote() {
+    function getFormData() {
         const newNote = {
             id: Date.now(),
-            title: $('#mytest > .board-note-title').val(),
-            description: $('#mytest > .board-note-description').val(),
+            title: $(`${CREATE_NOTE_FORM} > .board-note-title`).val(),
+            description: $(`${CREATE_NOTE_FORM}  > .board-note-description`).val(),
             x: '',
             y: ''
         }
@@ -124,9 +124,14 @@ $(function () {
         return newNote;
     }
 
+    function resetForm() {
+        $(`${CREATE_NOTE_FORM} > .board-note-title`).val('');
+        $(`${CREATE_NOTE_FORM}  > .board-note-description`).val('');
+    }
 
 
-    $('#mytest').dialog({
+
+    $(CREATE_NOTE_FORM).dialog({
         modal: true,
         draggable: false,
         autoOpen: false,
@@ -136,13 +141,12 @@ $(function () {
                 text: "Add",
                 click: function () {
 
-                    let hanote = testNote();
-
-                    boardContainer.insertAdjacentHTML('beforeend', generateNote(hanote));
-                    listOfNotes.push(hanote);
-
+                    boardContainer.insertAdjacentHTML('beforeend', generateNote(getFormData()));
+                    listOfNotes.push(getFormData());
+                    resetForm();
                     saveState();
-                    $('.board-note').draggable();
+
+                    $('.board-note').draggable(saveNotePosition());
                     $(this).dialog("close");
                 },
             },
@@ -157,28 +161,25 @@ $(function () {
 
     });
 
-    
 
-    $('.board-note').draggable({
-        zIndex: 100,
-        // other options...
-        drag: function (event, ui) {
-            //    dragposition = ui.position;
-        },
+    function saveNotePosition() {
+        const savePos = {
+            stop: function (event, ui) {
 
-        stop: function (event, ui) {
-            
-            const id = $(this).data().noteId;
+                const id = $(this).data().noteId;
 
-            listOfNotes.find(be => be.id == id)['x'] = ui.position.top;
-            listOfNotes.find(be => be.id == id)['y'] = ui.position.left;
+                listOfNotes.find(be => be.id == id)['x'] = ui.position.top;
+                listOfNotes.find(be => be.id == id)['y'] = ui.position.left;
 
-            saveState();
+                saveState();
 
-            
+            }
 
         }
-    });
+        return savePos;
+    }
+
+    $('.board-note').draggable(saveNotePosition());
 
 
 });
