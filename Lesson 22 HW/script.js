@@ -54,7 +54,7 @@ $(function () {
 
     function onBoardEvent(e) {
         const targetParentId = e.target.parentNode.dataset.noteId;
-
+        console.log(e.target)
         switch (true) {
             case e.target.classList.contains(BOARD_DESCRIPTION_CLASS):
                 e.target.addEventListener('change', () => {
@@ -113,22 +113,21 @@ $(function () {
     }
 
     function getFormData() {
-        const newNote = {
+        const newNoteData = {
             id: Date.now(),
             title: $(`${CREATE_NOTE_FORM} > .board-note-title`).val(),
             description: $(`${CREATE_NOTE_FORM}  > .board-note-description`).val(),
-            x: '',
-            y: ''
+            x: 1,
+            y: 1
         }
 
-        return newNote;
+        return newNoteData;
     }
 
     function resetForm() {
         $(`${CREATE_NOTE_FORM} > .board-note-title`).val('');
         $(`${CREATE_NOTE_FORM}  > .board-note-description`).val('');
     }
-
 
 
     $(CREATE_NOTE_FORM).dialog({
@@ -141,12 +140,22 @@ $(function () {
                 text: "Add",
                 click: function () {
 
-                    boardContainer.insertAdjacentHTML('beforeend', generateNote(getFormData()));
                     listOfNotes.push(getFormData());
-                    resetForm();
+                    
+                    
+                    boardContainer.insertAdjacentHTML('beforeend', generateNote(getFormData()));
+
                     saveState();
 
-                    $('.board-note').draggable(saveNotePosition());
+                    
+
+
+                    $(".board-note").draggable(saveNotePosition());
+
+                    
+                    resetForm();
+
+
                     $(this).dialog("close");
                 },
             },
@@ -156,7 +165,8 @@ $(function () {
                     $(this).dialog("close");
                 }
             }
-        }
+        },
+        beforeClose: $('.board-note').draggable(saveNotePosition())
 
 
     });
@@ -165,10 +175,14 @@ $(function () {
     function saveNotePosition() {
         const savePos = {
             stop: function (event, ui) {
-
+                console.log(ui);
+                console.log(this);
                 const id = $(this).data().noteId;
 
-                listOfNotes.find(be => be.id == id)['x'] = ui.position.top;
+                listOfNotes.find(be => {
+                    console.log(be)
+                    return be.id == id
+                })['x'] = ui.position.top;
                 listOfNotes.find(be => be.id == id)['y'] = ui.position.left;
                 saveState();
             }
