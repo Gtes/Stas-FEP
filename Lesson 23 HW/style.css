@@ -1,0 +1,95 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.searh-user-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.user-details-wrapper {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.user-details, .my-searh-user-input{
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+.my-searh-user-input{
+    margin-top: 15px;
+}
+
+.user-details{
+    display: flex;
+    background: #fafafa;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    border: 1px solid #efefef;
+
+}
+
+.user-details-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details-main{
+    display: flex;    
+    flex-direction: column;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.user-details-main-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.user-details-main-item-title{
+    font-size: 26px;
+    line-height: 30px;
+    color: #24292e;
+}
+
+.user-details-main-reposInfo-link{
+    font-size: 28px;
+    font-weight: 900;
+    text-decoration: none;
+    color: #488bce;
+}
+
+.user-details-side-avatar {
+    width: 100%;
+    max-width: 270px;
+}
+
+.user-details-side-fullName{
+    font-size: 18px;
+}
+
+.user-details-side-text{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+a[target="_blank"]::after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin: 0 3px 0 5px;
+  }
+
