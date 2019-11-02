@@ -66,16 +66,20 @@ body {
     color: #24292e;
 }
 
-.user-details-main-reposInfo-link{
-    font-size: 28px;
-    font-weight: 900;
+.user-details-side-profileUrl, .user-details-main-link{
     text-decoration: none;
     color: #488bce;
+}
+
+.user-details-main-link{
+    font-size: 28px;
+    font-weight: 900;
 }
 
 .user-details-side-avatar {
     width: 100%;
     max-width: 270px;
+    border-radius: 5px;
 }
 
 .user-details-side-fullName{

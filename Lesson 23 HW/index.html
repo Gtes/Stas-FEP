@@ -18,9 +18,9 @@
 
 <body>
   <div class="main-wrapper">
-    
+
     <div class="searh-user-wrapper">
-      <input type="text" id="searh-user-input" class="my-searh-user-input" placeholder="Username">
+      <input type="text" id="searh-user-input" class="my-searh-user-input" placeholder="Username" autofocus>
     </div>
 
     <div class="user-details-wrapper">
@@ -42,17 +42,17 @@
           </div>
 
         </div>
-
+        
         <div class="user-details-main">
 
           <div class="user-details-main-item">
             <span class="user-details-main-item-title">Repos</span>
-            <a href="{{repos_url}}" class="user-details-main-reposInfo-link" target="_blank">{{public_reposNumber}}</a>
-          </div>
+            <a href="{{repos_url}}" class="user-details-main-link" target="_blank">{{public_reposNumber}}</a>
+          </div>  
 
           <div class="user-details-main-item">
             <span class="user-details-main-item-title">Followers</span>
-            <a href="{{followers_url}}" class="user-details-main-reposInfo-link" target="_blank">{{followers}}</a>
+            <a href="{{followers_url}}" class="user-details-main-link" target="_blank">{{followers}}</a>
           </div>
 
           <div class="user-details-main-item">
