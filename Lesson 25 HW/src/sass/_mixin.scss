@@ -1,0 +1,102 @@
+@mixin image_gradient($deg, $top, $bottom) {
+    background: linear-gradient($deg, $top, $bottom) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin number () {
+    font-family: $montserrat;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+@mixin heading () {
+    text-align: center;
+
+    &__sub-title {
+        font-family: $kaushan_script;
+        font-size: 24px;
+        color: $title_color;
+
+    }
+
+    &__main-title {
+        margin: 14px 0 75px 0;
+        font-family: $montserrat;
+        font-size: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        color: $title_color;
+
+
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: $line;
+            left: 50%;
+            bottom: -37px;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__description {
+        @include make-lg-column(10);
+        @include make-lg-column-offset(1);
+        font-family: $roboto;
+        font-size: 15px;
+        line-height: 24px;
+        font-weight: 400;
+        color: $description_color
+    }
+}
+
+@mixin slider_link_line_after {
+    &::after {
+        position: absolute;
+        content: '';
+        width: 70px;
+        border-top: 3px solid $line;
+        top: -25px;
+        left: 0;
+    }
+}
+
+//gallery hover _about-us
+@mixin gallery_hover($image) {
+    background: $image;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
+    &:hover {
+        @include image_gradient(360deg, $sweet_corn, $froly, $image);
+
+    }
+
+}
+
+//team
+@mixin new_gallery_hover($bg_image) {
+    @include image_gradient(360deg, $sweet_corn, $froly, $bg_image);
+    box-shadow: 15px 15px 0px 0px rgba(114, 218, 220, 1);
+    transform: translate(-15px, -15px);
+}
+
+//header font size taken from https://codepen.io/dbox/pen/meaMba
+/// @site https://madebymike.com.au/writing/precise-control-responsive-typography/
+@mixin fluid-type($min-font-size: 12px, $max-font-size: 21px, $lower-range: 500px, $upper-range: 1200px) {
+
+    font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
+    
+    @media screen and (max-width: $lower-range) {
+      font-size: $min-font-size;
+    }
+    @media screen and (min-width: $upper-range){
+      font-size: $max-font-size;
+    }
+  }

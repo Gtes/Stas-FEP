@@ -1,0 +1,5 @@
+.heading {
+    margin-top: 68px;
+    @include heading();
+    @include clearfix;
+}
