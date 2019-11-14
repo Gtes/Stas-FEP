@@ -1,7 +1,9 @@
 
 import './js/main.js';
-import './js/second.js';
+import './js/localStorage.js';
 import './scss/base.scss'
+
+
 
 
 
