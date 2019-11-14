@@ -5,7 +5,6 @@ function getState() {
 
 
 function saveState() {
-    console.log(lisOfTodos)
     localStorage.setItem('todo', JSON.stringify(this.lisOfTodos));
 }
 

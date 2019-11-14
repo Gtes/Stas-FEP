@@ -1,15 +1,20 @@
 import $ from 'jquery';
+import { saveState, getState } from './localStorage';
 
 $(function () {
     class Todo {
-        // static addTodoItemForm = '.addTodoItem';
+    
         static listItemTemplate = '#listItemTemplate';
         static todoList = $('#todoList')
-        static lisOfTodos = []
 
         constructor() {
             this.todoList = $('#todoList');
             this.addTodoItemButton = $("#addTodoItemButton")
+            
+            this.lisOfTodos = []
+            
+            this.getState = getState;
+            this.saveState = saveState;
             
             this.init();
 
@@ -20,10 +25,11 @@ $(function () {
 
 
         init() {
-            Todo.lisOfTodos = this.getState();
-            Todo.renderBoard(Todo.lisOfTodos)
+            this.lisOfTodos = this.getState();
+            Todo.renderBoard(this.lisOfTodos)
 
         }
+
 
         static renderBoard(data) {
             const todoItemsHtml = data.map((data) => Todo.generateListItem(data));
@@ -39,16 +45,6 @@ $(function () {
                 .replace('{{isDone}}', todoItem.isDone ? 'isDone' : '');
         }
 
-
-        getState() {
-            const data = localStorage.getItem('todo');
-            return data ? JSON.parse(data) : [];
-        }
-
-
-        saveState() {
-            localStorage.setItem('todo', JSON.stringify(Todo.lisOfTodos));
-        }
 
         changeTodoStatus(el) {
             const targetDataId = $(el.target).closest('li[data-todo-id]').data('todo-id');
@@ -69,7 +65,7 @@ $(function () {
         }
 
         changeDoneField(id, field, status) {
-            Todo.lisOfTodos.find(x => x.id == id)[field] = status;
+            this.lisOfTodos.find(x => x.id == id)[field] = status;
         }
 
         deleteTodoListItem(el) {
@@ -79,7 +75,7 @@ $(function () {
         }
 
         deleteTodo(todoId) {
-            Todo.lisOfTodos = Todo.lisOfTodos.filter(el => {
+            this.lisOfTodos = this.lisOfTodos.filter(el => {
                 return el.id != todoId
             });
 
@@ -100,14 +96,18 @@ $(function () {
 
 
         addTodoItem() {
-            let noteData = this.getNoteData()
-            Todo.todoList.append(Todo.generateListItem(noteData));
-            Todo.lisOfTodos.push(noteData);
-            console.log(Todo.lisOfTodos)
+            let todoData = this.getTodoData()
+            
+            Todo.todoList.append(Todo.generateListItem(todoData));
+            this.lisOfTodos.push(todoData);
+            
             this.saveState();
+
+            $('#taskName').val('')
+            $('#taskName').focus()
         }
 
-        getNoteData() {
+        getTodoData() {
             const newTodoData = {
                 id: Date.now(),
                 name: $('#taskName').val(),
