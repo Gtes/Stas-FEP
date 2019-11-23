@@ -1,12 +1,8 @@
 export default class Chat {
     constructor(config) {
         this.websocket = new WebSocket('ws://fep-app.herokuapp.com');
-        console.log(this.websocket)
 
         this.onmymsg = config.onMessage;
-        // this.name = config.name;
-
-        // console.log(this.name)
 
         this.onmessage();
         this.onopen();
@@ -36,7 +32,6 @@ export default class Chat {
             data = JSON.parse(e.data);
             this.onmymsg(data)
         }
-
     }
 
 

@@ -19,7 +19,6 @@ function addLog(message) {
     $log.append(
         `<div class="${message.type}">${message.name}: ${message.message}</div>`
     );
-    console.log('hahahahahah')
 }
 
 function sendMessage() {
