@@ -1,2 +1,2 @@
 # Stas-FEP
-Hillel homeworks
+Hillel Front-End Pro Homeworks
